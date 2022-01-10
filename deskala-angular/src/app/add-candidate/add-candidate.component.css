@@ -1,0 +1,29 @@
+.candidate-form {
+  align-items: flex-start !important;
+}
+
+.title-left {
+  text-align: left !important;
+  margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.candidate-form-buttons{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.app-form-cancel-btn {
+  background-color: white;
+  color: #3caff2;
+  border: 2px solid #3caff2;
+  padding: 15px 50px;
+  width: max-content;
+  margin-top: 30px;
+  margin-right: 20px;
+}

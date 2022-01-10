@@ -1,0 +1,10 @@
+<div class="app-header">
+  <p class="app-header-title">Deskala - Assignment</p>
+  <button
+    *ngIf="authService.isLoggedIn()"
+    class="app-header-logout"
+    (click)="onLogout()"
+  >
+    Log Out
+  </button>
+</div>

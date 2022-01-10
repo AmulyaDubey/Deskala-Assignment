@@ -1,0 +1,54 @@
+.dashboard-page {
+  padding: 4vw;
+}
+
+.page-title {
+  font-size: 22px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.dashboard-table-container {
+  margin: 40px 0;
+}
+
+.dashboard-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  background-color: white;
+}
+
+.dashboard-table td,
+.dashboard-table th {
+  text-align: left;
+  padding: 15px;
+}
+
+.dashboard-table th {
+  font-size: 14px;
+  color: gray;
+}
+
+.dashboard-table tr:nth-child(even) {
+  background-color: rgba(60, 175, 242, 0.1);
+}
+
+select {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.dashboard__table__action__icons{
+  color: #3caff2;
+  font-size: 16px;
+}
+
+.dashboard__table__action__icons i{
+  margin: 5px;
+  cursor: pointer;
+}

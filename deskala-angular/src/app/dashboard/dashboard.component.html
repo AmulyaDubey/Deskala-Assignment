@@ -1,0 +1,47 @@
+<div class="dashboard-page">
+  <div>
+    <h3 class="page-title">Your Dashboard</h3>
+    <div class="dashboard-table-container">
+      <p class="candidates-count-text">
+        Candidates List: {{ candidates.length }}
+      </p>
+      <table class="dashboard-table">
+        <tr>
+          <th *ngFor="let column of columns">{{ column.title }}</th>
+        </tr>
+        <tr *ngFor="let candidate of candidates; index as i">
+          <td *ngFor="let column of columns; index as j">
+            <ng-container [ngSwitch]="j">
+              <p *ngSwitchCase="0">{{ i + 1 }}</p>
+              <select
+                *ngSwitchCase="columns.length - 2"
+                [value]="candidate.result"
+                (change)="updateCandidateResult(candidate, $event.target.value)"
+              >
+                <option>Shortlisted</option>
+                <option>Waitlisted</option>
+              </select>
+              <div
+                *ngSwitchCase="columns.length - 1"
+                class="dashboard__table__action__icons"
+              >
+                <i
+                  class="fa fa-pencil"
+                  aria-hidden="true"
+                  (click)="updateCandidate(candidate)"
+                ></i>
+                <i
+                  class="fa fa-trash-o"
+                  aria-hidden="true"
+                  (click)="deleteCandidate(candidate._id)"
+                ></i>
+              </div>
+              <p *ngSwitchDefault>{{ candidate[column.key] }}</p>
+            </ng-container>
+          </td>
+        </tr>
+      </table>
+      <a href="/candidate/form">+ Add new candidate</a>
+    </div>
+  </div>
+</div>

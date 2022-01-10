@@ -1,0 +1,194 @@
+<div class="center-page-content">
+  <form
+    class="app-form-section candidate-form"
+    #candidateForm="ngForm"
+    (ngSubmit)="candidateForm.valid && onFormSubmit(candidateForm)"
+  >
+    <p class="app-form-title title-left">Create Candidate</p>
+
+    <div class="row">
+      <div class="col-6" style="margin-right: 30px">
+        <div class="app-form-input-group">
+          <label for="candidate__name__input" class="app-form-input-label"
+            >Name</label
+          >
+          <input
+            id="candidate__name__input"
+            type="text"
+            class="app-form-input"
+            placeholder="Enter your name"
+            #name="ngModel"
+            name="name"
+            [(ngModel)]="candidateService.selectedCandidate.name"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !name.valid
+            }"
+          />
+          <div *ngIf="candidateForm.submitted && name.errors">
+            <label class="validation-message" *ngIf="name.errors.required"
+              >This field is required</label
+            >
+          </div>
+        </div>
+
+        <div class="app-form-input-group">
+          <label for="candidate__dob__input" class="app-form-input-label"
+            >Date of Birth</label
+          >
+          <input
+            id="candidate__dob__input"
+            type="date"
+            class="app-form-input"
+            placeholder="Enter your date of birth"
+            #dob="ngModel"
+            name="dob"
+            [(ngModel)]="candidateService.selectedCandidate.dob"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !dob.valid
+            }"
+          />
+          <div *ngIf="candidateForm.submitted && dob.errors">
+            <label class="validation-message" *ngIf="dob.errors.required"
+              >This field is required</label
+            >
+          </div>
+        </div>
+
+        <div class="app-form-input-group">
+          <label for="candidate__age__input" class="app-form-input-label"
+            >Age</label
+          >
+          <input
+            id="candidate__age__input"
+            type="number"
+            class="app-form-input"
+            placeholder="Enter your age"
+            #age="ngModel"
+            name="age"
+            [(ngModel)]="candidateService.selectedCandidate.age"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !age.valid
+            }"
+          />
+          <div *ngIf="candidateForm.submitted && age.errors">
+            <label class="validation-message" *ngIf="age.errors.required"
+              >This field is required</label
+            >
+          </div>
+        </div>
+
+        <div class="app-form-input-group">
+          <label for="candidate__email__input" class="app-form-input-label"
+            >Email Id</label
+          >
+          <input
+            id="candidate__email__input"
+            type="email"
+            class="app-form-input"
+            placeholder="Enter email"
+            #email="ngModel"
+            name="email"
+            [(ngModel)]="candidateService.selectedCandidate.email"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !email.valid
+            }"
+            email
+          />
+          <div *ngIf="candidateForm.submitted && email.errors">
+            <label class="validation-message" *ngIf="email.errors.required"
+              >This field is required</label
+            >
+            <label class="validation-message" *ngIf="email.errors.email"
+              >Invalid email address</label
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="app-form-input-group">
+          <label for="candidate__address__input" class="app-form-input-label"
+            >Address</label
+          >
+          <input
+            id="candidate__address__input"
+            type="text"
+            class="app-form-input"
+            placeholder="Enter your address"
+            #address="ngModel"
+            name="address"
+            [(ngModel)]="candidateService.selectedCandidate.address"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !address.valid
+            }"
+          />
+          <div *ngIf="candidateForm.submitted && address.errors">
+            <label class="validation-message" *ngIf="address.errors.required"
+              >This field is required</label
+            >
+          </div>
+        </div>
+
+        <div class="app-form-input-group">
+          <label for="candidate__state__input" class="app-form-input-label"
+            >State</label
+          >
+          <select
+            id="candidate__state__input"
+            class="app-form-input"
+            #state="ngModel"
+            name="state"
+            [(ngModel)]="candidateService.selectedCandidate.state"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !state.valid
+            }"
+          >
+            <option *ngFor="let state of states" [ngValue]="state.name">
+              {{ state.name }}
+            </option>
+          </select>
+
+          <div *ngIf="candidateForm.submitted && state.errors">
+            <label class="validation-message" *ngIf="state.errors.required"
+              >This field is required</label
+            >
+          </div>
+        </div>
+
+        <div class="app-form-input-group">
+          <label for="candidate__pincode__input" class="app-form-input-label"
+            >Pin Code</label
+          >
+          <input
+            id="candidate__pincode__input"
+            type="text"
+            class="app-form-input"
+            placeholder="Enter your pincode"
+            pincode="ngModel"
+            name="pincode"
+            #pincode="ngModel"
+            [(ngModel)]="candidateService.selectedCandidate.pincode"
+            required
+            [ngClass]="{
+              'invalid-textbox': candidateForm.submitted && !pincode.valid
+            }"
+          />
+          <div *ngIf="candidateForm.submitted && pincode.errors">
+            <label class="validation-message" *ngIf="pincode.errors.required"
+              >This field is required</label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="candidate-form-buttons">
+      <button class="app-form-cancel-btn" (click)="cancelForm(candidateForm)">Cancel</button>
+      <button class="app-form-submit-btn" type="submit">Create</button>
+    </div>
+  </form>
+</div>

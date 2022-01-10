@@ -1,0 +1,64 @@
+<div class="center-page-content">
+  <form
+    #loginForm="ngForm"
+    class="app-form-section"
+    (ngSubmit)="onFormSubmit(loginForm)"
+  >
+    <p class="app-form-title">Log In</p>
+    <div *ngIf="error" class="error-alert-div">
+      <label>{{ error }}</label>
+    </div>
+    <div class="app-form-input-group">
+      <label for="login__email__input" class="app-form-input-label"
+        >Email Id</label
+      >
+      <input
+        id="login__email__input"
+        type="text"
+        class="app-form-input"
+        placeholder="Enter your Email ID"
+        #email="ngModel"
+        name="email"
+        [(ngModel)]="authService.selectedUser.email"
+        required
+        [ngClass]="{ 'invalid-textbox': submitted && !email.valid }"
+        email
+        (ngModelChange)="clearError()"
+      />
+      <div *ngIf="submitted && email.errors">
+        <label class="validation-message" *ngIf="email.errors.required"
+          >This field is required</label
+        >
+        <label class="validation-message" *ngIf="email.errors.email"
+          >Invalid email address</label
+        >
+      </div>
+    </div>
+    <div class="app-form-input-group">
+      <label for="login__phone__input" class="app-form-input-label"
+        >Password</label
+      >
+      <input
+        id="login__phone__input"
+        type="password"
+        class="app-form-input"
+        placeholder="Enter your phone number"
+        #password="ngModel"
+        name="password"
+        [(ngModel)]="authService.selectedUser.passowrd"
+        required
+        [ngClass]="{
+          'invalid-textbox': submitted && !password.valid
+        }"
+      />
+      <small class="app-form-input-small-text">Minimum 8 Alpha Numeric</small>
+      <div *ngIf="submitted && password.errors">
+        <label class="validation-message" *ngIf="password.errors.required"
+          >This field is required</label
+        >
+      </div>
+    </div>
+    <button class="app-form-submit-btn" type="submit">Login</button>
+    <a href="/register">Register here for new users</a>
+  </form>
+</div>
